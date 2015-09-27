@@ -68,122 +68,458 @@ img {
 </div>
 
 
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
-<p>You can also embed plots, for example:</p>
-<p><img src="data:image/png;base64,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" title alt width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
-<div id="prepare-the-datasets" class="section level1">
-<h1>Prepare the datasets</h1>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This project is related to data where personal activity is recorded from accelerometers on the belt, forearm, arm, and dumbell of 6 research study participants. Data is collected to assess what kind of exercising is best for improving health. Assignments goal is to predict exercise labels which defines quality of training (classe variable) for the test set data using much larger training data. More information is available from the website here: <em><a href="http://groupware.les.inf.puc.rio.br/har" class="uri">http://groupware.les.inf.puc.rio.br/har</a></em> (see the section on the Weight Lifting Exercise Dataset).</p>
 </div>
-<div id="the-training-data-for-this-project-are-available-here" class="section level1">
-<h1>The training data for this project are available here:</h1>
-<p>trainingUrl &lt;- “<a href="http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv" class="uri">http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv</a>” # read file training &lt;- read.csv(url(trainingUrl), na.strings=c(“NA”,“#DIV/0!”,“”))</p>
+<div id="preparing-datasets" class="section level2">
+<h2>Preparing datasets</h2>
+<p>First we must load the data from the internet. Training and test data are provided separately.</p>
+<pre class="r"><code># The training data for this project are available here:
+trainingUrl &lt;- &quot;http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv&quot;
+# read file
+training &lt;- read.csv(url(trainingUrl), na.strings=c(&quot;NA&quot;,&quot;#DIV/0!&quot;,&quot;&quot;))
+
+# number of observations and variables in training data
+dim(training)</code></pre>
+<pre><code>## [1] 19622   160</code></pre>
+<pre class="r"><code># The test data are available here:
+testingUrl &lt;- &quot;http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv&quot;
+# read file
+testing &lt;- read.csv(url(testingUrl), na.strings=c(&quot;NA&quot;,&quot;#DIV/0!&quot;,&quot;&quot;))
+# number of observations and variables in testing data
+dim(testing)</code></pre>
+<pre><code>## [1]  20 160</code></pre>
+<p>Machine learning is done by using Caret which is a very extensive R package covering at least 194 prediction models.</p>
+<p>To start data preparation variables without variation were dropped out because they cannot contribute to prediction. Data consists also variables where missingness was over 90%. Many prediction algorithms does not allow using incomplete data so all variables with over 50 % of missing observations were then dropped out from the data. No imputation was needed since after these two procedures the data was found out to consist only variables with 100% of observations. Finally first five variables which are related to observation identification and time stamping were removed since they have no meaning in prediction process.</p>
+<pre class="r"><code># load Caret
+library(caret)</code></pre>
+<pre><code>## Loading required package: lattice
+## Loading required package: ggplot2</code></pre>
+<pre class="r"><code># remove variables with nearly zero variance
+nzv &lt;- nearZeroVar(training)
+training1 &lt;- training[, -nzv]
+
+# remove variables where the missingness is over 50% 
+halfNAs &lt;- sapply(training1, function(x) mean(is.na(x))) &gt; 0.50
+training2 &lt;- training1[, halfNAs==F]
+
+# Remove first five variables
+modellingdata &lt;- training2[, -(1:5)]
+remove(training1)
+remove(training2)</code></pre>
+<div id="splitting-data" class="section level3">
+<h3>Splitting data</h3>
+<p>Function createDataPartition splits data within groups. Proportion of observations to allocated into training data was set to 60% which left 40% of observations in to testing set.</p>
+<pre class="r"><code>trainIndex &lt;- createDataPartition(y=modellingdata$classe, p=0.6, list=FALSE)
+trainData = modellingdata[trainIndex,]
+testData = modellingdata[-trainIndex,]
+dim(trainData); dim(testData)</code></pre>
+<pre><code>## [1] 11776    54</code></pre>
+<pre><code>## [1] 7846   54</code></pre>
+<pre class="r"><code>set.seed(3433) # Without this you cant get the result</code></pre>
 </div>
-<div id="the-test-data-are-available-here" class="section level1">
-<h1>The test data are available here:</h1>
-<p>testingUrl &lt;- “<a href="http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv" class="uri">http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv</a>” # read file testing &lt;- read.csv(url(testingUrl), na.strings=c(“NA”,“#DIV/0!”,“”))</p>
 </div>
-<div id="i-use-caret-package-exclusively-in-this-assignment-which-can-interfaces-to" class="section level1">
-<h1>I use caret-package exclusively in this assignment which can interfaces to</h1>
+<div id="building-models." class="section level2">
+<h2>Building models.</h2>
+<p>With qualitative response variable ordinary regression models seems not to be appropriate. From other more advanced modeling techniques I focus on three approaches:lda, rpart and fandom forest.</p>
+<p>Linear discriminant analysis (lda) applies Bayes theorem to classify observations into the most probable class. The model is quite similar to more familiar logistic regression. Rpart is implementation of Classification and Regression Trees developed mostly by Breiman et al 1984 (see <em><a href="https://en.wikipedia.org/wiki/Recursive_partitioning" class="uri">https://en.wikipedia.org/wiki/Recursive_partitioning</a></em> ).</p>
+<p>In random forest approach a number of decision trees are constructed on bootstrapped training samples. Approach is randon in a sense that in splitting a random sample of predictors is chosen as candidates from the full set of variables. Main note is that with this approach majority of variables are always excluded from the splitting procedure.</p>
+<pre class="r"><code>## linear discriminant analysis
+
+lda.fit &lt;- train(trainData$classe ~ ., data=trainData, method=&quot;lda&quot;)</code></pre>
+<pre><code>## Loading required package: MASS</code></pre>
+<pre class="r"><code>print(lda.fit$finalModel)</code></pre>
+<pre><code>## Call:
+## lda(x, grouping = y)
+## 
+## Prior probabilities of groups:
+##         A         B         C         D         E 
+## 0.2843071 0.1935292 0.1744226 0.1638927 0.1838485 
+## 
+## Group means:
+##   num_window roll_belt pitch_belt   yaw_belt total_accel_belt gyros_belt_x
+## A   384.1589  58.65484  0.7287097 -13.659949         10.61619 -0.005352449
+## B   504.3357  64.51369 -0.1044230 -13.700206         11.06319 -0.004058798
+## C   488.7113  63.59154 -1.2935102  -7.994007         11.03359 -0.011178189
+## D   429.1415  60.06659  1.8661140 -18.837580         11.14974 -0.014010363
+## E   379.0513  75.99739  0.2929423  -3.030813         12.90762  0.006545035
+##   gyros_belt_y gyros_belt_z accel_belt_x accel_belt_y accel_belt_z
+## A   0.03954301   -0.1211141    -6.728196     28.76374    -61.58005
+## B   0.04198333   -0.1333436    -4.779289     31.64853    -72.54892
+## C   0.03939630   -0.1317089    -3.727361     30.44206    -68.98539
+## D   0.03531088   -0.1360570    -8.358549     30.04663    -67.80725
+## E   0.03711316   -0.1349007    -4.061432     29.59677    -93.84988
+##   magnet_belt_x magnet_belt_y magnet_belt_z   roll_arm  pitch_arm
+## A      56.99612      602.4358     -337.9107 -0.1175627   3.256111
+## B      49.42299      599.3361     -336.8280 32.4502413  -6.836902
+## C      57.77799      600.3987     -336.5725 24.6544839  -1.503033
+## D      48.33834      594.8249     -340.1948 22.5562642 -10.772389
+## E      65.23141      567.8425     -377.2855 19.6352055 -12.381607
+##      yaw_arm total_accel_arm gyros_arm_x gyros_arm_y gyros_arm_z
+## A -10.568904        27.56481  0.03324970  -0.2229301   0.2603524
+## B   8.697960        26.54410  0.05245722  -0.3010312   0.2632865
+## C   3.876665        24.50146  0.10823272  -0.2633982   0.2788267
+## D   5.774503        23.31762  0.01363731  -0.2457409   0.2623834
+## E  -3.010328        24.41663  0.01399076  -0.2747206   0.2889792
+##   accel_arm_x accel_arm_y accel_arm_z magnet_arm_x magnet_arm_y
+## A  -132.91129    48.42951   -76.36171    -23.49104    236.83632
+## B   -42.72005    26.85959   -95.91926    232.98464    131.23563
+## C   -83.18598    42.52532   -56.00925    144.20399    192.11295
+## D    16.16528    25.74663   -48.20104    399.60052     96.04456
+## E   -16.94319    13.50531   -76.53580    322.03557     83.83372
+##   magnet_arm_z roll_dumbbell pitch_dumbbell yaw_dumbbell
+## A     410.1610      21.09705     -19.395888    2.0200119
+## B     194.8749      33.50967       2.367780   13.8229973
+## C     363.5083     -12.71184     -25.458286  -17.4612976
+## D     298.4052      50.90806      -2.534450    0.7807416
+## E     215.0296      26.52583      -7.383247    4.5205794
+##   total_accel_dumbbell gyros_dumbbell_x gyros_dumbbell_y gyros_dumbbell_z
+## A             14.79480        0.1117264      0.039214456      -0.06040621
+## B             14.31330        0.1569767      0.008521281      -0.14097411
+## C             13.08861        0.1892843      0.057244401      -0.15432327
+## D             11.43782        0.2095803      0.009932642      -0.13247668
+## E             14.51455        0.1475012      0.112133949      -0.14885912
+##   accel_dumbbell_x accel_dumbbell_y accel_dumbbell_z magnet_dumbbell_x
+## A       -51.428017         52.77419        -56.18608         -386.3689
+## B        -2.479158         67.60290        -17.34006         -254.2606
+## C       -41.666018         31.92941        -55.09786         -379.1198
+## D       -23.102073         54.23679        -34.42850         -317.7145
+## E       -19.019400         55.80139        -25.63187         -287.3552
+##   magnet_dumbbell_y magnet_dumbbell_z roll_forearm pitch_forearm
+## A          217.7867          10.53065     26.55958      -6.56000
+## B          263.6204          49.53752     31.21146      14.48536
+## C          163.1110          63.09348     59.91252      12.19507
+## D          220.4207          58.52902     17.54552      27.73643
+## E          232.8388          70.92055     39.53173      16.60892
+##   yaw_forearm total_accel_forearm gyros_forearm_x gyros_forearm_y
+## A   26.228303            32.18967       0.1617025      0.14136798
+## B   12.701878            35.35761       0.1347828      0.12377797
+## C   40.145677            35.00876       0.2085979      0.05421130
+## D    6.190808            35.92383       0.1221347      0.02655440
+## E    9.702891            36.51316       0.1348545      0.06239723
+##   gyros_forearm_z accel_forearm_x accel_forearm_y accel_forearm_z
+## A       0.1817981       -1.911589        169.5481       -60.52121
+## B       0.1787495      -75.998684        138.6643       -46.95305
+## C       0.1480526      -49.121227        209.4494       -63.28043
+## D       0.1200052     -150.284974        152.2793       -47.88601
+## E       0.1634134      -72.502540        147.6411       -59.74273
+##   magnet_forearm_x magnet_forearm_y magnet_forearm_z
+## A        -202.8548         474.6834         407.5890
+## B        -330.6582         290.1580         373.3993
+## C        -339.5901         495.6597         461.1762
+## D        -452.2228         323.7295         360.1487
+## E        -331.4661         277.3275         356.6356
+## 
+## Coefficients of linear discriminants:
+##                                LD1           LD2           LD3
+## num_window            4.424899e-04 -0.0006884287  0.0015681962
+## roll_belt             6.023250e-02  0.0922034286  0.0107453394
+## pitch_belt            2.986600e-02  0.0183277170 -0.0745308325
+## yaw_belt             -9.579574e-03  0.0019241515 -0.0107091713
+## total_accel_belt     -3.706954e-02  0.0051406344 -0.2862832019
+## gyros_belt_x          7.089707e-01 -0.1325420201  1.0957297237
+## gyros_belt_y         -1.850419e+00 -2.5953686760 -0.5135092287
+## gyros_belt_z          5.736340e-01  0.5288491801  0.4426890007
+## accel_belt_x         -1.737081e-03 -0.0003265422  0.0211472003
+## accel_belt_y         -2.250440e-02 -0.0348636080  0.0501383982
+## accel_belt_z          6.304245e-03  0.0281706717 -0.0079091836
+## magnet_belt_x        -1.187612e-02  0.0051797986 -0.0223837766
+## magnet_belt_y        -2.334911e-02 -0.0075683047 -0.0009219036
+## magnet_belt_z         7.892834e-03 -0.0014041525  0.0113716364
+## roll_arm              1.008873e-03  0.0003069033  0.0020563741
+## pitch_arm            -3.607029e-03  0.0063079046  0.0062373221
+## yaw_arm               1.218535e-03 -0.0011386985  0.0017732038
+## total_accel_arm       3.457010e-03 -0.0232643259 -0.0241019157
+## gyros_arm_x           1.388758e-01  0.0205580133 -0.0725052368
+## gyros_arm_y           1.234764e-01 -0.0690874439 -0.1468653473
+## gyros_arm_z          -1.217729e-01 -0.1388836754  0.0406352251
+## accel_arm_x          -3.510087e-03 -0.0044585209 -0.0084263852
+## accel_arm_y          -3.304596e-03  0.0142343375  0.0012838868
+## accel_arm_z           1.004218e-02 -0.0022782396  0.0020834332
+## magnet_arm_x          1.184299e-04 -0.0002510132  0.0019179103
+## magnet_arm_y         -1.470538e-03 -0.0049453009  0.0046239314
+## magnet_arm_z         -3.782273e-03 -0.0018955136 -0.0059731559
+## roll_dumbbell         2.435094e-03 -0.0041440933 -0.0034549007
+## pitch_dumbbell       -5.309524e-03 -0.0031256208 -0.0032481438
+## yaw_dumbbell         -8.037142e-03  0.0074195779 -0.0033387556
+## total_accel_dumbbell  7.021475e-02  0.0674129319  0.0024418068
+## gyros_dumbbell_x      2.876278e-01 -0.4807918970  0.0256650137
+## gyros_dumbbell_y      2.154714e-01 -0.2462480567 -0.0549480643
+## gyros_dumbbell_z      1.005126e-01 -0.3222727528  0.0606249701
+## accel_dumbbell_x      1.270239e-02  0.0087740918  0.0006742362
+## accel_dumbbell_y      2.296687e-03  0.0019813034  0.0021716046
+## accel_dumbbell_z      2.466168e-03  0.0016375246  0.0022827746
+## magnet_dumbbell_x    -4.085242e-03 -0.0003062581  0.0034897819
+## magnet_dumbbell_y    -1.192443e-03  0.0026693145 -0.0006602041
+## magnet_dumbbell_z     1.319278e-02 -0.0099340992 -0.0016757506
+## roll_forearm          1.434343e-03  0.0011151869  0.0002174411
+## pitch_forearm         1.583269e-02 -0.0140294367  0.0056640198
+## yaw_forearm          -1.129028e-04  0.0005705860  0.0007549276
+## total_accel_forearm   3.314328e-02  0.0055062585 -0.0059734038
+## gyros_forearm_x      -4.400818e-02 -0.1348194404  0.2200213555
+## gyros_forearm_y      -1.149337e-02 -0.0485008243  0.0271723652
+## gyros_forearm_z       6.939783e-02  0.1474674222 -0.0615950819
+## accel_forearm_x       3.632370e-03  0.0106444194  0.0006703372
+## accel_forearm_y       5.496158e-04 -0.0004992896 -0.0011066016
+## accel_forearm_z      -7.137652e-03  0.0026101624  0.0036704394
+## magnet_forearm_x     -1.780240e-03 -0.0035584702 -0.0000603948
+## magnet_forearm_y     -8.976465e-04 -0.0016323872  0.0004554433
+## magnet_forearm_z     -9.124556e-05 -0.0014487431 -0.0003064009
+##                                LD4
+## num_window            0.0000574558
+## roll_belt             0.0714284071
+## pitch_belt            0.0100173419
+## yaw_belt             -0.0032241031
+## total_accel_belt     -0.1578154538
+## gyros_belt_x          0.3361705696
+## gyros_belt_y          1.0377518049
+## gyros_belt_z         -0.6014132620
+## accel_belt_x          0.0030663463
+## accel_belt_y          0.0054678626
+## accel_belt_z          0.0176552444
+## magnet_belt_x        -0.0024120984
+## magnet_belt_y        -0.0037389170
+## magnet_belt_z         0.0026847455
+## roll_arm              0.0002465581
+## pitch_arm             0.0017822923
+## yaw_arm              -0.0014005778
+## total_accel_arm      -0.0173858737
+## gyros_arm_x           0.0682415123
+## gyros_arm_y           0.2612317940
+## gyros_arm_z           0.1993994361
+## accel_arm_x          -0.0019557124
+## accel_arm_y           0.0043841099
+## accel_arm_z          -0.0076554701
+## magnet_arm_x          0.0011178519
+## magnet_arm_y          0.0002160571
+## magnet_arm_z          0.0022323267
+## roll_dumbbell        -0.0073742600
+## pitch_dumbbell       -0.0043405638
+## yaw_dumbbell         -0.0030776197
+## total_accel_dumbbell  0.0051971525
+## gyros_dumbbell_x      0.0429467234
+## gyros_dumbbell_y      0.2156868163
+## gyros_dumbbell_z      0.0288284277
+## accel_dumbbell_x      0.0064919059
+## accel_dumbbell_y     -0.0023038906
+## accel_dumbbell_z      0.0011848422
+## magnet_dumbbell_x    -0.0026319764
+## magnet_dumbbell_y    -0.0023225186
+## magnet_dumbbell_z     0.0092629062
+## roll_forearm          0.0012311570
+## pitch_forearm         0.0004669993
+## yaw_forearm           0.0011630375
+## total_accel_forearm   0.0037637580
+## gyros_forearm_x       0.0969245164
+## gyros_forearm_y      -0.0072100856
+## gyros_forearm_z      -0.0122705686
+## accel_forearm_x       0.0034277735
+## accel_forearm_y      -0.0020027938
+## accel_forearm_z      -0.0046170833
+## magnet_forearm_x     -0.0010377857
+## magnet_forearm_y      0.0003230735
+## magnet_forearm_z      0.0012447731
+## 
+## Proportion of trace:
+##    LD1    LD2    LD3    LD4 
+## 0.4783 0.2375 0.1743 0.1099</code></pre>
+<pre class="r"><code># classification tree
+rpart.fit &lt;- train(trainData$classe ~ ., data=trainData, method=&quot;rpart&quot;)</code></pre>
+<pre><code>## Loading required package: rpart</code></pre>
+<pre class="r"><code>print(rpart.fit$finalModel)</code></pre>
+<pre><code>## n= 11776 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+##  1) root 11776 8428 A (0.28 0.19 0.17 0.16 0.18)  
+##    2) roll_belt&lt; 130.5 10766 7424 A (0.31 0.21 0.19 0.18 0.11)  
+##      4) pitch_forearm&lt; -34.55 934    5 A (0.99 0.0054 0 0 0) *
+##      5) pitch_forearm&gt;=-34.55 9832 7419 A (0.25 0.23 0.21 0.2 0.12)  
+##       10) yaw_belt&gt;=169.5 456   42 A (0.91 0.046 0 0.039 0.0066) *
+##       11) yaw_belt&lt; 169.5 9376 7123 B (0.21 0.24 0.22 0.2 0.12)  
+##         22) magnet_dumbbell_z&lt; -88.5 1204  502 A (0.58 0.28 0.049 0.061 0.022) *
+##         23) magnet_dumbbell_z&gt;=-88.5 8172 6177 C (0.16 0.23 0.24 0.23 0.14)  
+##           46) num_window&lt; 241.5 1780 1106 A (0.38 0.049 0.089 0.25 0.23) *
+##           47) num_window&gt;=241.5 6392 4555 C (0.097 0.29 0.29 0.22 0.11)  
+##             94) magnet_dumbbell_x&gt;=-446.5 2194 1150 B (0.068 0.48 0.073 0.21 0.18) *
+##             95) magnet_dumbbell_x&lt; -446.5 4198 2521 C (0.11 0.19 0.4 0.22 0.078) *
+##    3) roll_belt&gt;=130.5 1010    6 E (0.0059 0 0 0 0.99) *</code></pre>
+<pre class="r"><code># random forest
+fitControl &lt;- trainControl(method=&quot;cv&quot;, number=3, verboseIter=F)
+rf.fit &lt;- train(trainData$classe ~ ., data=trainData, method=&quot;rf&quot;, trControl=fitControl)</code></pre>
+<pre><code>## Loading required package: randomForest
+## randomForest 4.6-10
+## Type rfNews() to see new features/changes/bug fixes.</code></pre>
+<pre class="r"><code>print(rf.fit$finalModel)</code></pre>
+<pre><code>## 
+## Call:
+##  randomForest(x = x, y = y, mtry = param$mtry) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 27
+## 
+##         OOB estimate of  error rate: 0.29%
+## Confusion matrix:
+##      A    B    C    D    E  class.error
+## A 3346    1    0    0    1 0.0005973716
+## B    6 2270    2    1    0 0.0039491005
+## C    0    6 2047    1    0 0.0034079844
+## D    0    0    9 1920    1 0.0051813472
+## E    0    1    0    5 2159 0.0027713626</code></pre>
 </div>
-<div id="models" class="section level1">
-<h1>147 models)</h1>
+<div id="comparing-models" class="section level2">
+<h2>Comparing models</h2>
+<p>Comparison is made by using confusionMatrix function. Among other things it report overall accuracy of the model. It seems that random forest approach is superior in comparison to other two.</p>
+<pre class="r"><code>ConfMat.lda &lt;- confusionMatrix(testData$classe, predict(lda.fit, newdata=testData))
+print(ConfMat.lda)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1850   76  139  157   10
+##          B  207 1002  167   74   68
+##          C  136  132  887  185   28
+##          D   75   52  159  950   50
+##          E   61  210  143  136  892
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.7113          
+##                  95% CI : (0.7012, 0.7213)
+##     No Information Rate : 0.2968          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.6346          
+##  Mcnemar's Test P-Value : &lt; 2.2e-16       
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.7943   0.6807   0.5933   0.6325   0.8511
+## Specificity            0.9308   0.9190   0.9243   0.9470   0.9191
+## Pos Pred Value         0.8289   0.6601   0.6484   0.7387   0.6186
+## Neg Pred Value         0.9147   0.9257   0.9061   0.9159   0.9756
+## Prevalence             0.2968   0.1876   0.1905   0.1914   0.1336
+## Detection Rate         0.2358   0.1277   0.1131   0.1211   0.1137
+## Detection Prevalence   0.2845   0.1935   0.1744   0.1639   0.1838
+## Balanced Accuracy      0.8625   0.7999   0.7588   0.7898   0.8851</code></pre>
+<pre class="r"><code># overall accuracy
+ConfMat.lda$overall[1]</code></pre>
+<pre><code>##  Accuracy 
+## 0.7113179</code></pre>
+<pre class="r"><code>ConfMat.rpart &lt;- confusionMatrix(testData$classe, predict(rpart.fit, newdata=testData))
+print(ConfMat.rpart)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1846   87  291    0    8
+##          B  313  726  479    0    0
+##          C  166  109 1093    0    0
+##          D  371  286  629    0    0
+##          E  328  268  219    0  627
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.547           
+##                  95% CI : (0.5359, 0.5581)
+##     No Information Rate : 0.3854          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.4184          
+##  Mcnemar's Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.6104  0.49187   0.4032       NA  0.98740
+## Specificity            0.9200  0.87567   0.9464   0.8361  0.88698
+## Pos Pred Value         0.8271  0.47826   0.7990       NA  0.43481
+## Neg Pred Value         0.7902  0.88148   0.7502       NA  0.99875
+## Prevalence             0.3854  0.18812   0.3455   0.0000  0.08093
+## Detection Rate         0.2353  0.09253   0.1393   0.0000  0.07991
+## Detection Prevalence   0.2845  0.19347   0.1744   0.1639  0.18379
+## Balanced Accuracy      0.7652  0.68377   0.6748       NA  0.93719</code></pre>
+<pre class="r"><code># overall accuracy
+ConfMat.rpart$overall[1]</code></pre>
+<pre><code>##  Accuracy 
+## 0.5470303</code></pre>
+<pre class="r"><code>ConfMat.rf &lt;- confusionMatrix(testData$classe, predict(rf.fit, newdata=testData))
+print(ConfMat.rf)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 2232    0    0    0    0
+##          B    5 1509    4    0    0
+##          C    0    2 1363    3    0
+##          D    0    0    3 1283    0
+##          E    0    2    0    3 1437
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9972          
+##                  95% CI : (0.9958, 0.9982)
+##     No Information Rate : 0.2851          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9965          
+##  Mcnemar's Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.9978   0.9974   0.9949   0.9953   1.0000
+## Specificity            1.0000   0.9986   0.9992   0.9995   0.9992
+## Pos Pred Value         1.0000   0.9941   0.9963   0.9977   0.9965
+## Neg Pred Value         0.9991   0.9994   0.9989   0.9991   1.0000
+## Prevalence             0.2851   0.1928   0.1746   0.1643   0.1832
+## Detection Rate         0.2845   0.1923   0.1737   0.1635   0.1832
+## Detection Prevalence   0.2845   0.1935   0.1744   0.1639   0.1838
+## Balanced Accuracy      0.9989   0.9980   0.9971   0.9974   0.9996</code></pre>
+<pre class="r"><code># overall accuracy
+ConfMat.rf$overall[1]</code></pre>
+<pre><code>## Accuracy 
+## 0.997196</code></pre>
 </div>
-<div id="to-mention-other-useful-packages-there-is-at-least-rattle-and-rapidminer" class="section level1">
-<h1>To mention other useful packages there is at least rattle and rapidminer</h1>
-</div>
-<div id="libraryappliedpredictivemodeling" class="section level1">
-<h1>library(AppliedPredictiveModeling)</h1>
-<p>library(caret) #library(rattle) #library(rpart.plot) #library(randomForest) #library(MASS) #library(ISLR)</p>
-</div>
-<div id="remove-variables-with-nearly-zero-variance" class="section level1">
-<h1>remove variables with nearly zero variance</h1>
-<p>nzv &lt;- nearZeroVar(training) training1 &lt;- training[, -nzv]</p>
-</div>
-<div id="remove-variables-where-the-missingness-is-over-50" class="section level1">
-<h1>remove variables where the missingness is over 50%</h1>
-<p>halfNAs &lt;- sapply(training1, function(x) mean(is.na(x))) &gt; 0.50 training2 &lt;- training1[, halfNAs==F]</p>
-</div>
-<div id="imputation-was-not-necessary." class="section level1">
-<h1>Imputation was not necessary.</h1>
-</div>
-<div id="remove-variables-that-dont-make-intuitive-sense-for-prediction-x-user_name-raw_timestamp_par" class="section level1">
-<h1>remove variables that don’t make intuitive sense for prediction (X, user_name, raw_timestamp_par</h1>
-</div>
-<div id="t_1-raw_timestamp_part_2-cvtd_timestamp-which-happen-to-be-the-first-five-variables" class="section level1">
-<h1>t_1, raw_timestamp_part_2, cvtd_timestamp), which happen to be the first five variables</h1>
-<p>modellingdata &lt;- training2[, -(1:5)] remove(training1) remove(training2)</p>
-</div>
-<div id="function-createdatapartition-splits-data-within-groups" class="section level1">
-<h1>function createDataPartition splits data within groups</h1>
-<p>trainIndex &lt;- createDataPartition(y=modellingdata$classe, p=0.6, list=FALSE) trainData = modellingdata[trainIndex,] testData = modellingdata[-trainIndex,] dim(trainData); dim(testData)</p>
-<p>set.seed(3433) # Without this you cant get the result</p>
-</div>
-<div id="with-qualitative-response-variable-i-have-to-leave-regression-models-out" class="section level1">
-<h1>With qualitative response variable I have to leave regression models out</h1>
-</div>
-<div id="and-focus-more-appropriate-modeling-techniques.-from-these-i-chose-to-try" class="section level1">
-<h1>and focus more appropriate modeling techniques. From these I chose to try</h1>
-</div>
-<div id="tree-approacheslda-rpart-and-fandom-forest" class="section level1">
-<h1>tree approaches:lda, rpart and fandom forest</h1>
-<p>Linear discriminant analysis applies Bayes theorem to classifying observations into the most probable class. The model is quite similar to more familiar logistic regression. Rpart is implemention to apply Classification and Regression Trees developed mostly by Breiman et al 1984.</p>
-<p>In random forest approach number of decision trees are constructed on bootstrapped training samples. Approach is randon in a sense that in splitting a random sample of predictors is chosen as candidates to further splitting from the full set of variables. Main note is that with this approach majority of variables are always excluded from the splitting procedure.</p>
-</div>
-<div id="caret-has-as-a-default-resampling-scheme-the-bootstrap." class="section level1">
-<h1>Caret has as a default resampling scheme the bootstrap.</h1>
-</div>
-<div id="linear-discriminant-analysis" class="section level1">
-<h1>linear discriminant analysis</h1>
-<p>lda.fit &lt;- train(trainData<span class="math">\(classe ~ ., data=trainData, method=&quot;lda&quot;) print(lda.fit\)</span>finalModel)</p>
-</div>
-<div id="classification-tree" class="section level1">
-<h1>classification tree</h1>
-<p>rpart.fit &lt;- train(trainData<span class="math">\(classe ~ ., data=trainData, method=&quot;rpart&quot;) print(rpart.fit\)</span>finalModel)</p>
-</div>
-<div id="random-forest" class="section level1">
-<h1>random forest</h1>
-<p>fitControl &lt;- trainControl(method=“cv”, number=3, verboseIter=F) rf.fit &lt;- train(trainData<span class="math">\(classe ~ ., data=trainData, method=&quot;rf&quot;, trControl=fitControl) print(rf.fit\)</span>finalModel)</p>
-</div>
-<div id="evaluate-the-model-on-the-probing-dataset" class="section level1">
-<h1>Evaluate the model on the probing dataset</h1>
-</div>
-<div id="comparing-models" class="section level1">
-<h1>Comparing models</h1>
-<p>ConfMat.lda &lt;- confusionMatrix(testData<span class="math">\(classe, predict(lda.fit, newdata=testData)) print(ConfMat.lda) ConfMat.lda\)</span>overall[1]</p>
-<p>ConfMat.rpart &lt;- confusionMatrix(testData<span class="math">\(classe, predict(rpart.fit, newdata=testData)) print(ConfMat.rpart) ConfMat.rpart\)</span>overall[1]</p>
-<p>ConfMat.rf &lt;- confusionMatrix(testData<span class="math">\(classe, predict(rf.fit, newdata=testData)) print(ConfMat.rf) ConfMat.rf\)</span>overall[1]</p>
-</div>
-<div id="final-model-with-whole-training-data" class="section level1">
-<h1>Final model with whole training data</h1>
-<p>final.fit &lt;- train(modellingdata<span class="math">\(classe ~ ., data=modellingdata, method=&quot;rf&quot;, trControl=fitControl) print(final.fit\)</span>finalModel)</p>
-</div>
-<div id="predict-on-the-test-data" class="section level1">
-<h1>Predict on the test data</h1>
-<p>preds &lt;- as.character(predict(final.fit, testing))</p>
-</div>
-<div id="create-function-to-write-predictions-to-files" class="section level1">
-<h1>create function to write predictions to files</h1>
-<p>pml_write_files = function(x){ n &lt;- length(x) for(i in 1:n) { filename &lt;- paste0(“problem_id_”, i, “.txt”) write.table(x[i], file=filename, quote=F, row.names=F, col.names=F) } }</p>
-</div>
-<div id="section" class="section level1">
-<h1></h1>
-</div>
-<div id="create-prediction-files-to-submit" class="section level1">
-<h1>create prediction files to submit</h1>
-<p>pml_write_files(preds)</p>
-</div>
-<div id="submission-to-coursera" class="section level1">
-<h1>Submission to Coursera</h1>
+<div id="submission-to-coursera" class="section level2">
+<h2>Submission to Coursera</h2>
+<p>Before prediction on the test set, I repeat random forest model using whole training data set (final.fit). Then to follow project assignment, this model is used to predict classe variable for 20 observation in the test data which is then processed in a format ready for submission to Coursera. Prediction model was capable of predict all observations correctly.</p>
+<pre class="r"><code>final.fit &lt;- train(modellingdata$classe ~ ., data=modellingdata, method=&quot;rf&quot;, trControl=fitControl)
+print(final.fit$finalModel)</code></pre>
+<pre><code>## 
+## Call:
+##  randomForest(x = x, y = y, mtry = param$mtry) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 27
+## 
+##         OOB estimate of  error rate: 0.13%
+## Confusion matrix:
+##      A    B    C    D    E  class.error
+## A 5578    1    0    0    1 0.0003584229
+## B    5 3789    2    1    0 0.0021069265
+## C    0    4 3418    0    0 0.0011689071
+## D    0    0    7 3208    1 0.0024875622
+## E    0    0    0    3 3604 0.0008317161</code></pre>
+<pre class="r"><code># Predict on the test data
+preds &lt;- as.character(predict(final.fit, testing))
+
+# create function to write predictions to files
+pml_write_files = function(x){
+        n &lt;- length(x)
+        for(i in 1:n) {
+                filename &lt;- paste0(&quot;problem_id_&quot;, i, &quot;.txt&quot;)
+                write.table(x[i], file=filename, quote=F, row.names=F, col.names=F)
+        }
+} 
+
+
+#
+# create prediction files to submit
+pml_write_files(preds)</code></pre>
 </div>
 
 
