@@ -1,0 +1,152 @@
+---
+title: "Practical Machine Learning Project"
+author: "Paaronen"
+date: "27 September 2015"
+output: html_document
+---
+
+
+
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
+
+# Prepare the datasets
+# The training data for this project are available here:
+trainingUrl <- "http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+# read file
+training <- read.csv(url(trainingUrl), na.strings=c("NA","#DIV/0!",""))
+
+# The test data are available here:
+testingUrl <- "http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
+# read file
+testing <- read.csv(url(testingUrl), na.strings=c("NA","#DIV/0!",""))
+
+
+# I use caret-package exclusively in this assignment which can interfaces to
+# 147 models)
+# To mention other useful packages there is at least  rattle and rapidminer
+
+#library(AppliedPredictiveModeling)
+library(caret)
+#library(rattle)
+#library(rpart.plot)
+#library(randomForest)
+#library(MASS)
+#library(ISLR)
+
+# remove variables with nearly zero variance
+nzv <- nearZeroVar(training)
+training1 <- training[, -nzv]
+
+# remove variables where the missingness is over 50% 
+halfNAs <- sapply(training1, function(x) mean(is.na(x))) > 0.50
+training2 <- training1[, halfNAs==F]
+
+# Imputation was not necessary.
+
+# remove variables that don't make intuitive sense for prediction (X, user_name, raw_timestamp_par
+# t_1, raw_timestamp_part_2, cvtd_timestamp), which happen to be the first five variables
+modellingdata <- training2[, -(1:5)]
+remove(training1)
+remove(training2)
+
+
+# function createDataPartition splits data within groups 
+
+trainIndex <- createDataPartition(y=modellingdata$classe, p=0.6, list=FALSE)
+trainData = modellingdata[trainIndex,]
+testData = modellingdata[-trainIndex,]
+dim(trainData); dim(testData)
+
+
+
+
+set.seed(3433) # Without this you cant get the result
+
+# With qualitative response variable I have to leave regression models out
+# and focus more appropriate modeling techniques. From these I chose to try 
+# tree approaches:lda, rpart and fandom forest
+
+Linear discriminant analysis applies Bayes theorem to classifying observations into the most probable class. The model is quite similar to more familiar logistic regression. Rpart is implemention to apply Classification and Regression Trees developed mostly by Breiman et al 1984. 
+
+In random forest approach number of decision trees are constructed on bootstrapped training samples. Approach is randon in a sense that in splitting a random sample of predictors is chosen as candidates to further splitting from the full set of variables. Main note is that with this approach majority of variables are always excluded from the splitting procedure.   
+
+# Caret has as a default resampling scheme the bootstrap.
+# linear discriminant analysis
+
+lda.fit <- train(trainData$classe ~ ., data=trainData, method="lda")
+print(lda.fit$finalModel)
+
+
+# classification tree
+rpart.fit <- train(trainData$classe ~ ., data=trainData, method="rpart")
+print(rpart.fit$finalModel)
+
+# random forest
+fitControl <- trainControl(method="cv", number=3, verboseIter=F)
+rf.fit <- train(trainData$classe ~ ., data=trainData, method="rf", trControl=fitControl)
+print(rf.fit$finalModel)
+
+
+# Evaluate the model on the probing dataset
+
+
+# Comparing models
+ConfMat.lda <- confusionMatrix(testData$classe, predict(lda.fit, newdata=testData))
+print(ConfMat.lda)
+ConfMat.lda$overall[1]
+
+ConfMat.rpart <- confusionMatrix(testData$classe, predict(rpart.fit, newdata=testData))
+print(ConfMat.rpart)
+ConfMat.rpart$overall[1]
+
+ConfMat.rf <- confusionMatrix(testData$classe, predict(rf.fit, newdata=testData))
+print(ConfMat.rf)
+ConfMat.rf$overall[1]
+
+
+# Final model with whole training data
+
+final.fit <- train(modellingdata$classe ~ ., data=modellingdata, method="rf", trControl=fitControl)
+print(final.fit$finalModel)
+
+
+# Predict on the test data
+preds <- as.character(predict(final.fit, testing))
+
+# create function to write predictions to files
+pml_write_files = function(x){
+        n <- length(x)
+        for(i in 1:n) {
+                filename <- paste0("problem_id_", i, ".txt")
+                write.table(x[i], file=filename, quote=F, row.names=F, col.names=F)
+        }
+} 
+
+
+
+#
+# create prediction files to submit
+pml_write_files(preds)
+
+# Submission to Coursera
+
