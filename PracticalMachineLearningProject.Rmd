@@ -7,8 +7,13 @@ output: html_document
 
 ## Introduction
 
-## Loading data
+This project is related to data where personal activity is recorded from accelerometers on the belt, forearm, arm, and dumbell of 6 research study participants. Data is collected to assess what kind of exercising is best for improving health. Assignments goal is to predict exercise labels which defines quality of training (classe variable) for the test set data using much larger training data. More information is available from the website here: *http://groupware.les.inf.puc.rio.br/har* (see the section on the Weight Lifting Exercise Dataset).
 
+
+
+## Preparing datasets
+
+First we must load the data from the internet. Training and test data are provided separately.
 
 ```{r}
 # The training data for this project are available here:
@@ -16,26 +21,27 @@ trainingUrl <- "http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.
 # read file
 training <- read.csv(url(trainingUrl), na.strings=c("NA","#DIV/0!",""))
 
+# number of observations and variables in training data
+dim(training)
+
 # The test data are available here:
 testingUrl <- "http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
 # read file
 testing <- read.csv(url(testingUrl), na.strings=c("NA","#DIV/0!",""))
-
+# number of observations and variables in testing data
+dim(testing)
 ```
 
 
-# Preparing datasets
+Machine learning is done by using Caret which is a very extensive R package covering at least 194 prediction models.
 
-I use caret-package exclusively in this assignment which can interfaces to
- 194 models). To mention other useful packages there is at least  rattle and rapidminer. 
-
-
-Imputation was not necessary.
-In addition also first five variables which are related to observation identification and time stamping are removed since they have no meaning in prediction process. 
+To start data preparation variables without variation were dropped out because they cannot contribute to prediction. Data consists also variables where missingness was over 90%. Many prediction algorithms does not allow using incomplete data so all variables with over 50 % of missing observations were then dropped out from the data. No imputation was needed since after these two procedures the data was found out to consist only variables with 100% of observations. Finally first five variables which are related to observation identification and time stamping were removed since they have no meaning in prediction process. 
 
 
 ```{r, echo=TRUE}
+# load Caret
 library(caret)
+
 # remove variables with nearly zero variance
 nzv <- nearZeroVar(training)
 training1 <- training[, -nzv]
@@ -52,12 +58,9 @@ remove(training2)
 ```
 
 
+### Splitting data
+ Function createDataPartition splits data within groups. Proportion of observations to allocated into training data was set to 60% which left 40% of observations in to testing set. 
 
-
-
-
-# Splitting data
-Function createDataPartition splits data within groups 
 ```{r}
 trainIndex <- createDataPartition(y=modellingdata$classe, p=0.6, list=FALSE)
 trainData = modellingdata[trainIndex,]
@@ -69,18 +72,15 @@ set.seed(3433) # Without this you cant get the result
 
 
 
+## Building models.
+
+With qualitative response variable ordinary regression models seems not to be appropriate. From other more advanced modeling techniques I focus on three approaches:lda, rpart and fandom forest.
+
+Linear discriminant analysis (lda) applies Bayes theorem to classify observations into the most probable class. The model is quite similar to more familiar logistic regression. Rpart is implementation of Classification and Regression Trees developed mostly by Breiman et al 1984 (see *https://en.wikipedia.org/wiki/Recursive_partitioning* ). 
+
+In random forest approach a number of decision trees are constructed on bootstrapped training samples. Approach is randon in a sense that in splitting a random sample of predictors is chosen as candidates from the full set of variables. Main note is that with this approach majority of variables are always excluded from the splitting procedure.   
 
 
-
-With qualitative response variable I have to leave regression models out
-and focus more appropriate modeling techniques. From these I chose to try 
-tree approaches:lda, rpart and fandom forest
-
-Linear discriminant analysis applies Bayes theorem to classifying observations into the most probable class. The model is quite similar to more familiar logistic regression. Rpart is implemention to apply Classification and Regression Trees developed mostly by Breiman et al 1984. 
-
-In random forest approach number of decision trees are constructed on bootstrapped training samples. Approach is randon in a sense that in splitting a random sample of predictors is chosen as candidates to further splitting from the full set of variables. Main note is that with this approach majority of variables are always excluded from the splitting procedure.   
-
-# Caret has as a default resampling scheme the bootstrap.
 ```{r}
 ## linear discriminant analysis
 
@@ -103,35 +103,34 @@ print(rf.fit$finalModel)
 
 ## Comparing models
 
+Comparison is made by using confusionMatrix function. Among other things it report overall accuracy of the model. It seems that random forest approach is superior in comparison to other two. 
+
 ```{r}
 ConfMat.lda <- confusionMatrix(testData$classe, predict(lda.fit, newdata=testData))
 print(ConfMat.lda)
+# overall accuracy
 ConfMat.lda$overall[1]
 
 ConfMat.rpart <- confusionMatrix(testData$classe, predict(rpart.fit, newdata=testData))
 print(ConfMat.rpart)
+# overall accuracy
 ConfMat.rpart$overall[1]
 
 ConfMat.rf <- confusionMatrix(testData$classe, predict(rf.fit, newdata=testData))
 print(ConfMat.rf)
+# overall accuracy
 ConfMat.rf$overall[1]
 
 
 ```
 
 
-# Final model with whole training data
+## Submission to Coursera
+Before prediction on the test set, I repeat random forest model using whole training data set (final.fit). Then to follow project assignment, this model is used to predict classe variable for 20 observation in the test data which is then processed in a format ready for submission to Coursera. Prediction model was capable of predict all observations correctly. 
 
 ```{r}
 final.fit <- train(modellingdata$classe ~ ., data=modellingdata, method="rf", trControl=fitControl)
 print(final.fit$finalModel)
-
-```
-
-
-# Submission to Coursera
-
-```{r}
 
 # Predict on the test data
 preds <- as.character(predict(final.fit, testing))
@@ -144,7 +143,6 @@ pml_write_files = function(x){
                 write.table(x[i], file=filename, quote=F, row.names=F, col.names=F)
         }
 } 
-
 
 
 #
